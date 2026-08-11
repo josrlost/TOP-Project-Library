@@ -16,4 +16,11 @@ function addToMyLibrary(title, author, pages, language) {
 addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "EN`");
 addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES");
 addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES")
-console.log(myLibrary);
+
+function displayFromMyLibrary(arr) {
+    for(const ele of arr) {
+        console.table(ele);
+    } 
+}
+
+displayFromMyLibrary(myLibrary);
