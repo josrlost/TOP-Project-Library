@@ -3,7 +3,12 @@ const addBookBtn = document.querySelector("#addNewBookBtn")
 const dialog = document.querySelector("#dialog");
 const closeBtn = document.querySelector("#closeBtn");
 const submitBtn = document.querySelector("#submitInfoBtn");
-const myLibrary = [];
+const inputTitle = document.querySelector("#title");
+const inputAuthor = document.querySelector("#author");
+const inputPages = document.querySelector("#pages");
+const inputLanguage = document.querySelector("#language");
+const inputHasRead = document.querySelector("#hasRead");
+let myLibrary = [];
 
 function Book(title, author, pages, language, hasRead, uid) {
     this.title = title,
@@ -30,16 +35,19 @@ function displayFromMyLibrary(arr) {
         let bookAuthor = document.createElement("td");
         let bookLang = document.createElement("td");
         let bookPages = document.createElement("td");
+        let bookHasRead = document.createElement("td");
         bookTitle.textContent = ele.title;
         bookAuthor.textContent = ele.author;
         bookLang.textContent = ele.language;
         bookPages.textContent = ele.pages;
+        bookHasRead.textContent = ele.hasRead;
         bookRow.appendChild(bookTitle);
         bookRow.appendChild(bookAuthor);
         bookRow.appendChild(bookLang);
         bookRow.appendChild(bookPages);
+        bookRow.appendChild(bookHasRead);
         bookTable.appendChild(bookRow);
-    } 
+    } myLibrary = [];
 }
 
 displayFromMyLibrary(myLibrary);
@@ -49,4 +57,6 @@ addBookBtn.addEventListener("click",() => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
 submitBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
+    addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value);
+    displayFromMyLibrary(myLibrary);
 })
