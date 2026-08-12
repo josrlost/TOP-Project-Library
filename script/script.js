@@ -1,5 +1,5 @@
 const bookTable = document.querySelector(".bookTable");
-
+const addBookBtn = document.querySelector("#addNewBookBtn")
 
 const myLibrary = [];
 
@@ -41,3 +41,7 @@ function displayFromMyLibrary(arr) {
 }
 
 displayFromMyLibrary(myLibrary);
+
+function addBookForm() {
+    
+}

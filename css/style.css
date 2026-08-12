@@ -28,4 +28,5 @@ div.bookInfo {
 
 table.bookTable {
     border: 1px solid black;
+    background-color: white;
 }
