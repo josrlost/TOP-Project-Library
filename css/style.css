@@ -19,6 +19,10 @@ div.container {
 button {
     border: none;
     background-color: aquamarine;
+    color: rgb(107, 105, 105);
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 15px;
 }
 
 div.bookInfo {

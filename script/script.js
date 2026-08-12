@@ -1,6 +1,7 @@
 const bookTable = document.querySelector(".bookTable");
 const addBookBtn = document.querySelector("#addNewBookBtn")
-
+const dialog = document.querySelector("#dialog");
+const closeBtn = document.querySelector("#closeBtn");
 const myLibrary = [];
 
 function Book(title, author, pages, language, hasRead, uid) {
@@ -17,9 +18,9 @@ function addToMyLibrary(title, author, pages, language, hasRead) {
     myLibrary.push(book);
 }
 
-addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "EN", true);
-addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES", false);
-addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", true);
+addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "EN", "Yes");
+addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES", "Yes");
+addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", "Yes");
 
 function displayFromMyLibrary(arr) {
     for(const ele of arr) {
@@ -42,6 +43,7 @@ function displayFromMyLibrary(arr) {
 
 displayFromMyLibrary(myLibrary);
 
-function addBookForm() {
-    
-}
+
+addBookBtn.addEventListener("click",() => dialog.showModal());
+
+closeBtn.addEventListener("click", () => dialog.close());
