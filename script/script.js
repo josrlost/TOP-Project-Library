@@ -52,7 +52,7 @@ function displayFromMyLibrary(arr) {
         bookRow.appendChild(removeBookBtn);
         bookRow.dataset.indexNumber = ele.uid;
         bookTable.appendChild(bookRow);
-    } myLibrary = [];
+    }   myLibrary = [];
 }
 
 displayFromMyLibrary(myLibrary);
