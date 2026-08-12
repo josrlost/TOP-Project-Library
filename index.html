@@ -23,7 +23,20 @@
             </table>
         </div>
         <dialog id="dialog">
-            <button id="closeBtn" type="button">Close dialog</button>
+            <form id="submitBookForm">
+                <label for="title">Book Title</label>
+                <input type="text" id="title">
+                <label for="author">Book Author</label>
+                <input type="text" id="author">
+                <label for="pages">Number of pages</label>
+                <input type="text" id="pages">
+                <label for="language">Language</label>
+                <input type="text" id="language">
+            </form>
+            <div id="btnDiv">
+                <button id="closeBtn" type="button">Close dialog</button>
+                <button id="submitInfoBtn" type="submit">Submit</button>
+            </div>
         </dialog>
     </div>
 </body>

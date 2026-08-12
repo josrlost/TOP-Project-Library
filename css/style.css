@@ -34,3 +34,12 @@ table.bookTable {
     border: 1px solid black;
     background-color: white;
 }
+
+#submitBookForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#dialog > div#btnDiv {
+    margin-top: 10px;
+}

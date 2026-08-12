@@ -2,6 +2,7 @@ const bookTable = document.querySelector(".bookTable");
 const addBookBtn = document.querySelector("#addNewBookBtn")
 const dialog = document.querySelector("#dialog");
 const closeBtn = document.querySelector("#closeBtn");
+const submitBtn = document.querySelector("#submitInfoBtn");
 const myLibrary = [];
 
 function Book(title, author, pages, language, hasRead, uid) {
@@ -45,5 +46,7 @@ displayFromMyLibrary(myLibrary);
 
 
 addBookBtn.addEventListener("click",() => dialog.showModal());
-
 closeBtn.addEventListener("click", () => dialog.close());
+submitBtn.addEventListener("click", (evt) => {
+    evt.preventDefault();
+})
