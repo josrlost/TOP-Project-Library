@@ -36,6 +36,9 @@ function displayFromMyLibrary(arr) {
         let bookLang = document.createElement("td");
         let bookPages = document.createElement("td");
         let bookHasRead = document.createElement("td");
+        let removeBookBtn = document.createElement('button')
+        removeBookBtn.classList.add("removeBookBtn")
+        removeBookBtn.textContent = "Remove";
         bookTitle.textContent = ele.title;
         bookAuthor.textContent = ele.author;
         bookLang.textContent = ele.language;
@@ -46,6 +49,8 @@ function displayFromMyLibrary(arr) {
         bookRow.appendChild(bookLang);
         bookRow.appendChild(bookPages);
         bookRow.appendChild(bookHasRead);
+        bookRow.appendChild(removeBookBtn);
+        bookRow.dataset.indexNumber = ele.uid;
         bookTable.appendChild(bookRow);
     } myLibrary = [];
 }
