@@ -1,26 +1,30 @@
 body {
     box-sizing: border-box;
     line-height: 1.5;
-    background: repeating-linear-gradient(rgb(247, 156, 156) 30%, rgb(253, 179, 253) 40%) ;
+    background: repeating-linear-gradient(rgb(225, 201, 250) 30%, rgb(207, 204, 249) 40%) ;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: rgb(27, 26, 26);
 }
 
 div.container {
-    background-color: whitesmoke;
+    background-color: rgb(241, 227, 245);
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
     justify-content: space-evenly;
-    width: 60vw;
-    height: 60vh;
     border: 2px solid purple;
 }
 
+div.container div:first-child {
+    margin: 20px;
+    background-color: inherit;
+}
+
 button {
-    border: none;
-    background-color: aquamarine;
+    border: 1px solid rgb(41, 0, 41);
+    background-color: rgb(213, 190, 255);
     color: rgb(107, 105, 105);
     font-weight: bold;
     padding: 5px 15px;
@@ -28,18 +32,36 @@ button {
 }
 
 div.bookInfo {
-    background-color: hsla(0, 29%, 17%, 0.601);
-    display: grid;
+    background-color: hsla(268, 32%, 40%, 0.926);
 }
 
 table.bookTable {
-    border: 1px solid black;
-    background-color: white;
+    border: 1px solid rgb(162, 77, 247);
+    background-color: rgb(241, 239, 249);
+    text-align: center;
+    table-layout: fixed;
+    width: 70%;
+    margin: 10px auto;
+    border-collapse: collapse;
 }
 
-#submitBookForm {
+th, td {
+    vertical-align: top;
+    padding: 0.3em;
+}
+
+table.bookTable tr:nth-child(odd) {
+    background-color: rgb(210, 195, 234);
+}
+
+#submitBookForm fieldset {
     display: flex;
     flex-direction: column;
+}
+
+#dialog {
+    border: 1px solid rgb(162, 77, 247);
+
 }
 
 #dialog > div#btnDiv {

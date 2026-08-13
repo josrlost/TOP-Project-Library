@@ -15,26 +15,40 @@
         <div class="bookInfo">
             <table class="bookTable">
                 <tr>
+                    <th></th>
                     <th>Title</th>
                     <th>Author</th>
                     <th>Language</th>
                     <th>Number of Pages</th>
                     <th>Read</th>
+                    <th></th>
                 </tr>
             </table>
         </div>
         <dialog id="dialog">
             <form id="submitBookForm">
-                <label for="title">Book Title</label>
-                <input type="text" id="title" placeholder="Book Title">
-                <label for="author">Book Author</label>
-                <input type="text" id="author" placeholder="Book Author">
-                <label for="pages">Number of pages</label>
-                <input type="text" id="pages" placeholder="100 pages">
-                <label for="language">Language</label>
-                <input type="text" id="language" placeholder="English">
-                <label for="hasRead">Have you read it?</label>
-                <input type="text" id="hasRead" placeholder="Yes">
+                <fieldset>
+                    <legend>Book Information</legend>
+                    <label for="title">Book Title</label>
+                    <input type="text" id="title" placeholder="Book Title" required>
+                    <label for="author">Book Author</label>
+                    <input type="text" id="author" placeholder="Book Author" required>
+                    <label for="pages">Number of pages</label>
+                    <input type="text" id="pages" placeholder="100 pages" required pattern="^[0-9]*$" min="5" max="2000">
+                    <label for="language">Language</label>
+                    <input type="text" id="language" placeholder="English" required>
+                </fieldset>
+                <fieldset>
+                    <legend>Have you read the book?</legend>
+                    <div>
+                        <label for="hasRead">Yes</label>
+                        <input type="radio" id="hasRead" required value="Yes" name="hasRead">
+                    </div>
+                    <div>
+                        <label for="hasNotRead">No</label>
+                        <input type="radio" id="hasNotRead" required value="No" name="hasRead">
+                    </div>
+                </fieldset>
             </form>
             <div id="btnDiv">
                 <button id="closeBtn" type="button">Close dialog</button>

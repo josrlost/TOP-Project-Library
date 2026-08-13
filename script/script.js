@@ -8,6 +8,7 @@ const inputAuthor = document.querySelector("#author");
 const inputPages = document.querySelector("#pages");
 const inputLanguage = document.querySelector("#language");
 const inputHasRead = document.querySelector("#hasRead");
+const inputHasNotRead = document.querySelector("#hasNotRead")
 let myLibrary = [];
 let nodesOfRemoveBtns = [];
 let nodesOfToggleBtns = [];
@@ -32,7 +33,7 @@ function addToMyLibrary(title, author, pages, language, hasRead) {
     myLibrary.push(book);
 }
 
-addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "EN", "Yes");
+addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480", "EN", "Yes");
 
 
 function displayFromMyLibrary(arr) {
@@ -97,16 +98,20 @@ function displayFromMyLibrary(arr) {
 }
 
 displayFromMyLibrary(myLibrary);
-addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES", "Yes");
+addToMyLibrary("2666", "Roberto Bolaño", "1136", "ES", "Yes");
 displayFromMyLibrary(myLibrary);
-addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", "Yes");
+addToMyLibrary("Paradiso", "Jose Lezama Lima", "466", "ES", "Yes");
 displayFromMyLibrary(myLibrary);
 
 addBookBtn.addEventListener("click", () => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
 submitBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
-    addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value);
+    if(inputHasRead.checked === true) {
+        addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value);
+    } else {
+        addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasNotRead.value);
+    }
     displayFromMyLibrary(myLibrary);
     nodesOfRemoveBtns.forEach(button => {
     button.addEventListener("click", (evt) => removeRow(evt))
