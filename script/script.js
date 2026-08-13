@@ -9,6 +9,7 @@ const inputPages = document.querySelector("#pages");
 const inputLanguage = document.querySelector("#language");
 const inputHasRead = document.querySelector("#hasRead");
 let myLibrary = [];
+let nodesOfRemoveBtns = [];
 
 function Book(title, author, pages, language, hasRead, uid) {
     this.title = title,
@@ -74,7 +75,7 @@ function displayFromMyLibrary(arr) {
         bookRow.appendChild(removeBookBtn);
         bookRow.dataset.indexNumber = arr.at(-1).uid;
         bookTable.appendChild(bookRow);
-    }
+    }   nodesOfRemoveBtns = document.querySelectorAll(".removeBookBtn");
 }
 
 displayFromMyLibrary(myLibrary);
@@ -83,22 +84,24 @@ displayFromMyLibrary(myLibrary);
 addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", "Yes");
 displayFromMyLibrary(myLibrary);
 
-addBookBtn.addEventListener("click",() => dialog.showModal());
+addBookBtn.addEventListener("click", () => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
 submitBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
     addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value);
     displayFromMyLibrary(myLibrary);
+    nodesOfRemoveBtns.forEach(button => {
+    button.addEventListener("click", (evt) => removeRow(evt))
+})
 })
 
-const removeBookBtn = document.querySelectorAll(".removeBookBtn");
 
-/*
-function removeRow() {
+function removeRow(evt) {
+    let uidRowNumber = evt.target.parentElement.dataset.indexNumber;
+    evt.target.parentElement.remove();
+    }
 
-}
 
-removeBookBtn.addEventListener("click", () => {
-    removeBookBtn.forEach(ele, () => );
+nodesOfRemoveBtns.forEach(button => {
+    button.addEventListener("click", (evt) => removeRow(evt))
 })
-*/
