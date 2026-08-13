@@ -97,7 +97,6 @@ submitBtn.addEventListener("click", (evt) => {
 
 
 function removeRow(evt) {
-    let uidRowNumber = evt.target.parentElement.dataset.indexNumber;
     evt.target.parentElement.remove();
     }
 
