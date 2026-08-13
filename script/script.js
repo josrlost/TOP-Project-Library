@@ -49,6 +49,7 @@ function displayFromMyLibrary(arr) {
         removeBookBtn.textContent = "Remove";
         toggleReadBtn.classList.add("toggleBtn")
         toggleReadBtn.textContent = "Update"
+        bookHasRead.classList.add("hasReadCell");
         bookTitle.textContent = arr[0].title;
         bookAuthor.textContent = arr[0].author;
         bookLang.textContent = arr[0].language;
@@ -75,7 +76,8 @@ function displayFromMyLibrary(arr) {
         removeBookBtn.classList.add("removeBookBtn");
         removeBookBtn.textContent = "Remove";
         toggleReadBtn.classList.add("toggleBtn")
-        toggleReadBtn.textContent = "Update"
+        toggleReadBtn.textContent = "Update";
+        bookHasRead.classList.add("hasReadCell");
         bookTitle.textContent = arr.at(-1).title;
         bookAuthor.textContent = arr.at(-1).author;
         bookLang.textContent = arr.at(-1).language;
@@ -108,6 +110,18 @@ submitBtn.addEventListener("click", (evt) => {
     displayFromMyLibrary(myLibrary);
     nodesOfRemoveBtns.forEach(button => {
     button.addEventListener("click", (evt) => removeRow(evt))
+});
+    nodesOfToggleBtns.forEach(button => {
+    button.addEventListener("click", (evt) => {
+        let hasReadNodeList = document.querySelectorAll(".hasReadCell");
+        let uidStored = evt.target.parentElement.dataset.indexNumber;
+        for(let i = 0; i < myLibrary.length; i++) {
+            if(myLibrary[i].uid === uidStored && hasReadNodeList[i].textContent === myLibrary[i].hasRead) {
+                myLibrary[i].toggleRead();
+                hasReadNodeList[i].textContent = myLibrary[i].hasRead;   
+            }
+        }
+    })
 })
 })
 
@@ -121,16 +135,16 @@ nodesOfRemoveBtns.forEach(button => {
     button.addEventListener("click", (evt) => removeRow(evt))
 })
 
+
 nodesOfToggleBtns.forEach(button => {
     button.addEventListener("click", (evt) => {
+        let hasReadNodeList = document.querySelectorAll(".hasReadCell");
         let uidStored = evt.target.parentElement.dataset.indexNumber;
         for(let i = 0; i < myLibrary.length; i++) {
-            if(myLibrary[i].uid === uidStored) {
+            if(myLibrary[i].uid === uidStored && hasReadNodeList[i].textContent === myLibrary[i].hasRead) {
                 myLibrary[i].toggleRead();
+                hasReadNodeList[i].textContent = myLibrary[i].hasRead;   
             }
         }
-        console.log(uidStored);
-        console.log(nodesOfToggleBtns);
-        console.log(myLibrary);
     })
 })
