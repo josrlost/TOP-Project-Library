@@ -1,7 +1,7 @@
 body {
     box-sizing: border-box;
     line-height: 1.5;
-    background-color: rgb(254, 251, 248);
+    background: repeating-linear-gradient(rgb(247, 156, 156) 30%, rgb(253, 179, 253) 40%) ;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,10 +10,12 @@ body {
 div.container {
     background-color: whitesmoke;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
+    justify-content: space-evenly;
     width: 60vw;
     height: 60vh;
+    border: 2px solid purple;
 }
 
 button {
