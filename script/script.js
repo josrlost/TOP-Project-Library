@@ -25,11 +25,10 @@ function addToMyLibrary(title, author, pages, language, hasRead) {
 }
 
 addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "EN", "Yes");
-addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES", "Yes");
-addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", "Yes");
+
 
 function displayFromMyLibrary(arr) {
-    for(const ele of arr) {
+    if(arr.length <= 1) {
         let bookRow = document.createElement("tr");
         let bookTitle = document.createElement("td")
         let bookAuthor = document.createElement("td");
@@ -39,24 +38,50 @@ function displayFromMyLibrary(arr) {
         let removeBookBtn = document.createElement('button')
         removeBookBtn.classList.add("removeBookBtn")
         removeBookBtn.textContent = "Remove";
-        bookTitle.textContent = ele.title;
-        bookAuthor.textContent = ele.author;
-        bookLang.textContent = ele.language;
-        bookPages.textContent = ele.pages;
-        bookHasRead.textContent = ele.hasRead;
+        bookTitle.textContent = arr[0].title;
+        bookAuthor.textContent = arr[0].author;
+        bookLang.textContent = arr[0].language;
+        bookPages.textContent = arr[0].pages;
+        bookHasRead.textContent = arr[0].hasRead;
         bookRow.appendChild(bookTitle);
         bookRow.appendChild(bookAuthor);
         bookRow.appendChild(bookLang);
         bookRow.appendChild(bookPages);
         bookRow.appendChild(bookHasRead);
         bookRow.appendChild(removeBookBtn);
-        bookRow.dataset.indexNumber = ele.uid;
+        bookRow.dataset.indexNumber = arr[0].uid;
         bookTable.appendChild(bookRow);
-    }   myLibrary = [];
+    } else {
+        let bookRow = document.createElement("tr");
+        let bookTitle = document.createElement("td")
+        let bookAuthor = document.createElement("td");
+        let bookLang = document.createElement("td");
+        let bookPages = document.createElement("td");
+        let bookHasRead = document.createElement("td");
+        let removeBookBtn = document.createElement('button')
+        removeBookBtn.classList.add("removeBookBtn")
+        removeBookBtn.textContent = "Remove";
+        bookTitle.textContent = arr.at(-1).title;
+        bookAuthor.textContent = arr.at(-1).author;
+        bookLang.textContent = arr.at(-1).language;
+        bookPages.textContent = arr.at(-1).pages;
+        bookHasRead.textContent = arr.at(-1).hasRead;
+        bookRow.appendChild(bookTitle);
+        bookRow.appendChild(bookAuthor);
+        bookRow.appendChild(bookLang);
+        bookRow.appendChild(bookPages);
+        bookRow.appendChild(bookHasRead);
+        bookRow.appendChild(removeBookBtn);
+        bookRow.dataset.indexNumber = arr.at(-1).uid;
+        bookTable.appendChild(bookRow);
+    }
 }
 
 displayFromMyLibrary(myLibrary);
-
+addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES", "Yes");
+displayFromMyLibrary(myLibrary);
+addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", "Yes");
+displayFromMyLibrary(myLibrary);
 
 addBookBtn.addEventListener("click",() => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
@@ -65,3 +90,15 @@ submitBtn.addEventListener("click", (evt) => {
     addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value);
     displayFromMyLibrary(myLibrary);
 })
+
+const removeBookBtn = document.querySelectorAll(".removeBookBtn");
+
+/*
+function removeRow() {
+
+}
+
+removeBookBtn.addEventListener("click", () => {
+    removeBookBtn.forEach(ele, () => );
+})
+*/
