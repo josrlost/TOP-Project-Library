@@ -7,8 +7,8 @@ const inputTitle = document.querySelector("#title");
 const inputAuthor = document.querySelector("#author");
 const inputPages = document.querySelector("#pages");
 const inputLanguage = document.querySelector("#language");
-const inputHasRead = document.querySelector("#hasRead");
-const inputHasNotRead = document.querySelector("#hasNotRead")
+let inputHasRead = document.querySelector("#hasRead");
+let inputHasNotRead = document.querySelector("#hasNotRead")
 let myLibrary = [];
 let nodesOfRemoveBtns = [];
 let nodesOfToggleBtns = [];
@@ -33,7 +33,7 @@ function addToMyLibrary(title, author, pages, language, hasRead) {
     myLibrary.push(book);
 }
 
-addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480", "EN", "Yes");
+addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "EN", "Yes");
 
 
 function displayFromMyLibrary(arr) {
@@ -93,41 +93,31 @@ function displayFromMyLibrary(arr) {
         bookRow.appendChild(toggleReadBtn);
         bookRow.dataset.indexNumber = arr.at(-1).uid;
         bookTable.appendChild(bookRow);
-    }   nodesOfRemoveBtns = document.querySelectorAll(".removeBookBtn");
-        nodesOfToggleBtns = document.querySelectorAll(".toggleBtn");
+    };
+    nodesOfRemoveBtns = document.querySelectorAll(".removeBookBtn");
+    nodesOfToggleBtns = document.querySelectorAll(".toggleBtn");
 }
 
 displayFromMyLibrary(myLibrary);
-addToMyLibrary("2666", "Roberto Bolaño", "1136", "ES", "Yes");
+addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES", "Yes");
 displayFromMyLibrary(myLibrary);
-addToMyLibrary("Paradiso", "Jose Lezama Lima", "466", "ES", "Yes");
+addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", "Yes");
 displayFromMyLibrary(myLibrary);
 
 addBookBtn.addEventListener("click", () => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
 submitBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
-    if(inputHasRead.checked === true) {
-        addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value);
-    } else {
-        addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasNotRead.value);
-    }
+    inputHasRead.checked === true?
+    addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value) :
+    addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasNotRead.value);
     displayFromMyLibrary(myLibrary);
     nodesOfRemoveBtns.forEach(button => {
     button.addEventListener("click", (evt) => removeRow(evt))
-});
     nodesOfToggleBtns.forEach(button => {
-    button.addEventListener("click", (evt) => {
-        let hasReadNodeList = document.querySelectorAll(".hasReadCell");
-        let uidStored = evt.target.parentElement.dataset.indexNumber;
-        for(let i = 0; i < myLibrary.length; i++) {
-            if(myLibrary[i].uid === uidStored && hasReadNodeList[i].textContent === myLibrary[i].hasRead) {
-                myLibrary[i].toggleRead();
-                hasReadNodeList[i].textContent = myLibrary[i].hasRead;   
-            }
-        }
-    })
+    button.addEventListener("click", changeHasReadDisplay)
 })
+});
 })
 
 
@@ -141,15 +131,18 @@ nodesOfRemoveBtns.forEach(button => {
 })
 
 
-nodesOfToggleBtns.forEach(button => {
-    button.addEventListener("click", (evt) => {
-        let hasReadNodeList = document.querySelectorAll(".hasReadCell");
-        let uidStored = evt.target.parentElement.dataset.indexNumber;
-        for(let i = 0; i < myLibrary.length; i++) {
-            if(myLibrary[i].uid === uidStored && hasReadNodeList[i].textContent === myLibrary[i].hasRead) {
-                myLibrary[i].toggleRead();
-                hasReadNodeList[i].textContent = myLibrary[i].hasRead;   
-            }
+function changeHasReadDisplay(evt) {
+    let hasReadNodeList = document.querySelectorAll(".hasReadCell");
+    for(let i = 0; i < myLibrary.length; i++) {
+        if(myLibrary[i].uid === evt.target.parentElement.dataset.indexNumber) {
+            myLibrary[i].toggleRead();
+            hasReadNodeList[i].textContent = myLibrary[i].hasRead;   
         }
-    })
+    }
+}
+
+
+nodesOfToggleBtns.forEach(button => {
+    button.addEventListener("click", changeHasReadDisplay)
 })
+
