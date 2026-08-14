@@ -33,7 +33,7 @@ function addToMyLibrary(title, author, pages, language, hasRead) {
     myLibrary.push(book);
 }
 
-addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "EN", "Yes");
+addToMyLibrary("The Silmarillion", "J. R. R. Tolkien", "480 pages", "English", "Yes");
 
 
 function displayFromMyLibrary(arr) {
@@ -99,9 +99,9 @@ function displayFromMyLibrary(arr) {
 }
 
 displayFromMyLibrary(myLibrary);
-addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "ES", "Yes");
+addToMyLibrary("2666", "Roberto Bolaño", "1136 pages", "Spanish", "Yes");
 displayFromMyLibrary(myLibrary);
-addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "ES", "Yes");
+addToMyLibrary("Paradiso", "Jose Lezama Lima", "466 pages", "Spanish", "Yes");
 displayFromMyLibrary(myLibrary);
 
 addBookBtn.addEventListener("click", () => dialog.showModal());
@@ -113,12 +113,12 @@ submitBtn.addEventListener("click", (evt) => {
     addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasNotRead.value);
     displayFromMyLibrary(myLibrary);
     nodesOfRemoveBtns.forEach(button => {
-    button.addEventListener("click", (evt) => removeRow(evt))
+        button.addEventListener("click", (evt) => removeRow(evt))
+    })
     nodesOfToggleBtns.forEach(button => {
-    button.addEventListener("click", changeHasReadDisplay)
-})
+        button.addEventListener("click", changeHasReadDisplay)
+    })
 });
-})
 
 
 function removeRow(evt) {

@@ -7,6 +7,9 @@
     <script src="script/script.js" defer></script>
     <title>TOP Project: Library</title>
 </head>
+<header>
+    <h1>Reading List</h1>
+</header>
 <body>
     <div class="container">
         <div>
@@ -26,7 +29,7 @@
             </table>
         </div>
         <dialog id="dialog">
-            <form id="submitBookForm">
+            <form id="submitBookForm" action="demo" method="get">
                 <fieldset>
                     <legend>Book Information</legend>
                     <label for="title">Book Title</label>
@@ -34,7 +37,7 @@
                     <label for="author">Book Author</label>
                     <input type="text" id="author" placeholder="Book Author" required>
                     <label for="pages">Number of pages</label>
-                    <input type="text" id="pages" placeholder="100 pages" required pattern="^[0-9]*$" min="5" max="2000">
+                    <input type="text" id="pages" placeholder="100 pages" required>
                     <label for="language">Language</label>
                     <input type="text" id="language" placeholder="English" required>
                 </fieldset>
@@ -52,7 +55,7 @@
             </form>
             <div id="btnDiv">
                 <button id="closeBtn" type="button">Close dialog</button>
-                <button id="submitInfoBtn" type="submit">Submit</button>
+                <button id="submitInfoBtn" type="button">Submit</button>
             </div>
         </dialog>
     </div>
