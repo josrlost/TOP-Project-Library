@@ -121,7 +121,6 @@ submitBtn.form.addEventListener("submit", (evt) => {
 });
 
 
-
 function removeRow(evt) {
     evt.target.parentElement.remove();
     }

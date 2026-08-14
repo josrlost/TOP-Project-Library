@@ -37,7 +37,7 @@
                     <label for="author">Book Author</label>
                     <input type="text" id="author" placeholder="Book Author" required>
                     <label for="pages">Number of pages</label>
-                    <input type="text" id="pages" placeholder="100 pages" required>
+                    <input type="text" id="pages" placeholder="100 pages" required min="10" max="2000" pattern="^[0-9]*$">
                     <label for="language">Language</label>
                     <input type="text" id="language" placeholder="English" required>
                 </fieldset>
