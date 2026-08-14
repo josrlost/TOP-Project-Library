@@ -67,3 +67,8 @@ table.bookTable tr:nth-child(odd) {
 #dialog > div#btnDiv {
     margin-top: 10px;
 }
+
+input:user-invalid {
+    border: 2px solid red;
+    background-color: rgb(252, 178, 178);
+}
