@@ -106,7 +106,7 @@ displayFromMyLibrary(myLibrary);
 
 addBookBtn.addEventListener("click", () => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
-submitBtn.addEventListener("click", (evt) => {
+submitBtn.form.addEventListener("submit", (evt) => {
     evt.preventDefault();
     inputHasRead.checked === true?
     addToMyLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputLanguage.value, inputHasRead.value) :
@@ -119,6 +119,7 @@ submitBtn.addEventListener("click", (evt) => {
         button.addEventListener("click", changeHasReadDisplay)
     })
 });
+
 
 
 function removeRow(evt) {

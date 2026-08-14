@@ -29,7 +29,7 @@
             </table>
         </div>
         <dialog id="dialog">
-            <form id="submitBookForm" action="demo" method="get">
+            <form id="submitBookForm">
                 <fieldset>
                     <legend>Book Information</legend>
                     <label for="title">Book Title</label>
@@ -52,11 +52,11 @@
                         <input type="radio" id="hasNotRead" required value="No" name="hasRead">
                     </div>
                 </fieldset>
+                <div id="btnDiv">
+                    <button id="closeBtn" type="button">Close dialog</button>
+                    <button id="submitInfoBtn" type="submit">Submit</button>
+                </div>
             </form>
-            <div id="btnDiv">
-                <button id="closeBtn" type="button">Close dialog</button>
-                <button id="submitInfoBtn" type="button">Submit</button>
-            </div>
         </dialog>
     </div>
 </body>
